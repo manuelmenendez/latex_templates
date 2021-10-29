@@ -11,6 +11,9 @@
 % AMS packages:
 \usepackage{amsmath, amsthm, amsfonts}
 
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+
 % Theorems
 %-----------------------------------------------------------------
 \newtheorem{thm}{Theorem}[section]
@@ -40,53 +43,159 @@
 % correctly. As an example we define the Jacobian:
 % -----------------------------------------------------------------
 \DeclareMathOperator{\Jac}{Jac}
+% This makes the same as \DeclareMathOperator{\Jac}{Jac}
+% \newcommand{\Jac}{\operatorname{Jac}}
+
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Max}{Max}
+\DeclareMathOperator{\End}{End}
 
 %-----------------------------------------------------------------
 \title{Template for a \LaTeX\ article}
 \author{Angela Menéndez\\
-  \small Dept. Templates and Editors\\
-  \small E12345\\
-  \small Spain
+  \small A-level, Year 12D\\
+  \small TEMS\\
+  \small Madrid
 }
 
 \begin{document}
 \maketitle
 
-\abstract{This is a simple template for an article written in \LaTeX.}
+\abstract{This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.}
 
-\section{First section}
+\section{Section for some maths typing examples}\label{sec:maths_examples}
 
-Here goes the text.
+Here goes the text of this first section.
+
+In this section a few examples of the use of 
+\verb|\DeclareMathOperator| will we put in practice.
+
+
+The \LaTeX code:
+
+\begin{center}
+\begin{verbatim}
+\begin{displaymath}
+  \Max_{x\in A} f(x) \qquad  \End_R V 
+\end{displaymath}
+\end{verbatim}
+\end{center}
+
+Produces:
+\begin{displaymath}
+  \Max_{x\in A} f(x) \qquad  \End_R V 
+\end{displaymath}
+
+
 \begin{equation}\label{eq:area}
   S = \pi r^2
 \end{equation}
 \[S_n = \sum_{n=1}^{\infty} \frac{1}{n^3} + \sum_{n=1}^{\infty} \frac{1}{n^3}\] 
 
 One can refer to equations like this: see equation (\ref{eq:area}). One can also
-refer to sections in the same way: see section \ref{sec:nothing}. Or
+refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
 to the bibliography like this: \cite{Cd94}.
+
+
+More text. Claro 
+\[\RR \text{is the set of real numbers}\]
+\[\ZZ\ \text{is the set of integer numbers}\]
+
+
 
 \subsection{Subsection}\label{sec:nothing}
 
-More text. Claro 
-\[\RR\]
-\[\ZZ\]
+\section{pseudo code}\label{sec:pseudo_code}
 
-\includegraphics[width=0.8\textwidth]{./figs/drawing.png}
+This is my first algorithm with \LaTeX
+
+\begin{algorithmic}[1]
+\State $i \gets 10$
+\If{$i\geq 5$} 
+    \State $i \gets i-1$
+\Else
+    \If{$i\leq 3$}
+        \State $i \gets i+2$
+    \EndIf
+\EndIf 
+\end{algorithmic}
+
+\bigskip 
+And next is the second
+\begin{algorithmic}
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+
+
+
+The complete pseudo code with titles:
+
+\begin{algorithm}
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}[1]
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\section{Pictures and graphs}\label{sec:pictures_graphs}
+
+\includegraphics[width=0.6\textwidth]{./figs/radius_scure.jpg}
 
 \subsubsection{Subsubsection}\label{sec:nothing2}
 
-More text
+More text \cite{Someone2000}
 
-\includegraphics[width=0.8\textwidth]{./figs/picture.JPG}
+\includegraphics[width=0.8\textwidth]{./figs/latex_logo.png}
 
-
+\newpage
 % Bibliography
 %-----------------------------------------------------------------
 \begin{thebibliography}{99}
 
-\bibitem{Cd94} Author, \emph{Title}, Journal/Editor, (year)
+\bibitem{Cd94} 
+	Author,
+	\emph{Title}
+	\newblock{Journal/Editor, (year)}
 
+
+\bibitem{Author1990}
+    A.~Author.
+    \newblock {\em Handbook of Everything}.
+    \newblock Some Press, 1990.
+
+  \bibitem{Someone2000}
+    S.~Someone.
+    \newblock On this and that.
+    \newblock {\em Journal of This and That}, 2(1):50--100,
+    2000.
 \end{thebibliography}
 
 
