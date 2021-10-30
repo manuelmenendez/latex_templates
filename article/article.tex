@@ -1,18 +1,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Template for a LaTex article in English.
+% Template for a LaTex article.
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[12pt,a4paper]{article}
 \usepackage{graphicx}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+%\usepackage[spanish]{babel}
 
 % AMS packages:
 \usepackage{amsmath, amsthm, amsfonts}
 
 \usepackage{algpseudocode}
 \usepackage{algorithm}
+%\usepackage[skip, parfill]{parskip}
+%\usepackage{parskip}
+
 
 % Theorems
 %-----------------------------------------------------------------
@@ -32,6 +38,8 @@
 %-----------------------------------------------------------------
 \def\RR{\mathbb{R}}
 \def\ZZ{\mathbb{Z}}
+\def\QQ{\mathbb{Q}}
+\def\NN{\mathbb{N}}
 
 % Similarly, one can define commands that take arguments. In this
 % example we define a command for the absolute value.
@@ -45,7 +53,6 @@
 \DeclareMathOperator{\Jac}{Jac}
 % This makes the same as \DeclareMathOperator{\Jac}{Jac}
 % \newcommand{\Jac}{\operatorname{Jac}}
-
 \DeclareMathOperator{\Ker}{Ker}
 \DeclareMathOperator{\Max}{Max}
 \DeclareMathOperator{\End}{End}
@@ -58,10 +65,31 @@
   \small Madrid
 }
 
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.5em}
+%\renewcommand{\baselinestretch}{1}
+
 \begin{document}
+
 \maketitle
 
-\abstract{This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.}
+
+
+%\abstract{
+%This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.}
+
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.5em}
+
+\bigskip 
+\begin{center}
+\textbf{Fake Abstract}
+\end{center}
+
+This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.This is a simple template for an article written in latex, with a few useful examples as introduction to pdflatex environment.
+
+This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.
+
 
 \section{Section for some maths typing examples}\label{sec:maths_examples}
 
@@ -96,9 +124,12 @@ One can refer to equations like this: see equation (\ref{eq:area}). One can also
 refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
 to the bibliography like this: \cite{Cd94}.
 
+One can refer to equations like this: see equation (\ref{eq:area}). One can also
+refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
+to the bibliography like this: \cite{Cd94}.
 
 More text. Claro 
-\[\RR \text{is the set of real numbers}\]
+\[\RR\ \text{is the set of real numbers}\]
 \[\ZZ\ \text{is the set of integer numbers}\]
 
 
