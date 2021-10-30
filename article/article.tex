@@ -10,6 +10,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
 %\usepackage[spanish]{babel}
+\usepackage{tikz}
 
 % AMS packages:
 \usepackage{amsmath, amsthm, amsfonts}
@@ -205,6 +206,55 @@ The complete pseudo code with titles:
 More text \cite{Someone2000}
 
 \includegraphics[width=0.8\textwidth]{./figs/latex_logo.png}
+
+
+\section{LaTeX Graphics using TikZ}
+
+\bigskip 
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (8,0) -- (8,8) -- (0,8) -- (0,0);
+\end{tikzpicture}
+\end{center}
+
+
+\bigskip 
+\begin{tikzpicture}
+\draw (0,0) -- (8,0) -- (8,8) -- cycle;
+\draw (0,0) parabola (-4,8);
+\end{tikzpicture}
+
+\bigskip 
+\begin{tikzpicture}
+\draw (0,0) .. controls (0,10) and (10,0) .. (10,10);
+\end{tikzpicture}
+
+
+\bigskip 
+\begin{tikzpicture}
+\draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- (0,0);
+\draw[red,thick,dashed] (3,3) circle (4cm);
+\end{tikzpicture}
+
+\bigskip 
+\begin{tikzpicture}
+\draw[step=1cm,gray,very thin] (-2,-2) grid (10,10);
+\fill[blue!40!white] (0,0) rectangle (6,6);
+\end{tikzpicture}
+
+\bigskip 
+\begin{tikzpicture}
+\draw[step=1cm,gray,very thin] (-1.9,-1.9) grid (9.9,9.9);
+\draw[thick,->] (0,0) -- (8.5,0) node[anchor=north west] {x axis};
+\draw[thick,->] (0,0) -- (0,8.5) node[anchor=south east] {y axis};
+
+\foreach \x in {0,1,2,3,4,5,6,7,8}
+   \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north] {$\x$};
+\foreach \y in {0,1,2,3,4,5,6,7,8}
+    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east] {$\y$};
+    
+\end{tikzpicture}
+
 
 \newpage
 % Bibliography
