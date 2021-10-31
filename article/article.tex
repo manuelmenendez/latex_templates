@@ -15,6 +15,7 @@
 \usepackage{framed}
 \usepackage{float}
 \usepackage{lipsum}
+\usepackage{cprotect}
 
 % AMS packages:
 \usepackage{amsmath, amsthm, amsfonts}
@@ -111,20 +112,7 @@ This is a simple template for an article written in \LaTeX, with a few useful ex
 \caption{Paragraph indentation and spacing}
 \end{figure}
 
-
-
-\section{Introduction to boxes and minipages}
-\fbox{
-\parbox{\textwidth}{
-One can refer to equations like this: see equation (\ref{eq:area}). One can also refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
-to the bibliography like this: \cite{Cd94} just typing.}}
-
-\bigskip
-\fbox{
-\begin{minipage}[c]{15em}
-  The quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.
-\end{minipage}
-}\\ \\
+\subsection{Paragraph indentation}\label{sec:par_indentation}
 
 \lipsum[1]
 
@@ -147,14 +135,97 @@ to the bibliography like this: \cite{Cd94} just typing.}}
 \end{myindentpar}
 
 \lipsum[1]
-
+\newpage
+\subsubsection{Indenting paragraphs with \texttt{itemize}}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a,magna.
 \begin{itemize}
-\item[] \lipsum[5]
+\item[]
+	Fusce mauris. Vestibulum luctus nibh at lectus. Sed bibendum, nulla a faucibus semper, leo velit ultricies tellus, ac venenatis arcu wisi vel nisl. Vestibulum diam. Aliquam pellentesque, augue quis sagittis posuere, turpis lacus congue quam, in hendrerit risus eros eget felis.
+\begin{itemize}
+\item[]
+Maecenas eget erat in sapien mattis porttitor.
+Vestibulum porttitor. Nulla facilisi. Sed a turpis eu lacus commodo
+facilisis. Morbi fringilla, wisi in dignissim interdum, justo lectus
+sagittis dui, et vehicula libero dui cursus dui. Mauris tempor ligula
+sed lacus. Duis cursus enim ut augue. Cras ac magna. Cras nulla.
+Nulla egestas. Curabitur a leo. Quisque egestas wisi eget nunc.
+Nam feugiat lacus vel est. Curabitur consectetuer.
+\end{itemize} 
 \end{itemize}
 
 
+\section{Introduction to boxes and minipages}
+\fbox{
+\parbox{0.8\textwidth}{
+One can refer to equations like this: see equation (\ref{eq:area}). One can also refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
+to the bibliography like this: \cite{Cd94} just typing.}}
+
 \bigskip
-\noindent
+\fbox{
+\begin{minipage}[c]{15em}
+  The quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.
+\end{minipage}
+}\\ \\
+
+
+\subsection{Boxing verbatim}
+
+The normal way for boxing a paragraph or a piece of text is like follows,\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+\fbox {
+    \parbox{0.9\linewidth}{
+    This is some text!
+    Blah blah blah...
+    }
+}
+\end{verbatim}
+\end{minipage}
+\hfill\vline\hfill
+\begin{minipage}[c]{0.35\textwidth}
+\fbox {
+    \parbox{0.9\linewidth}{
+    This is some text! Blah blah blah...
+    }
+}
+\end{minipage}\\
+
+It gets more complicated when trying to box a piece of text with a verbatim environment on it. \\
+
+\begin{minipage}{0.55\textwidth}
+\begin{verbatim}
+\fbox {
+    \parbox{0.9\linewidth}{
+     This is text.
+     \begin{verbatim}
+     This is some more text.
+     *end{verbatim}
+     And this is even more text.
+    }
+}
+\end{verbatim}
+\end{minipage}
+\vline\hfill
+\begin{minipage}[c]{0.35\textwidth}
+Error
+\end{minipage}\\
+
+
+\cprotect\fbox{
+  \begin{minipage}{10cm}
+    This some normal text and 
+    this is verbatim 
+     \begin{verbatim}
+     This is some more text.
+     \end{verbatim}
+  \end{minipage}
+}
+
+
+
+
+\subsection{Boxing math equations}
 For boxing equation \verb|\boxed{}| has to be used.
 
 \
@@ -232,22 +303,22 @@ In the preamble of the document the Math Operator have to be defined
 \DeclareMathOperator{\End}{End}
 \end{verbatim}
 
-\begin{center}
-\begin{minipage}[c]{0.6\textwidth}
-The \LaTeX \ code:
+\bigskip
+\begin{minipage}[t]{0.55\textwidth}
+\textbf{The \LaTeX \ code:}
 \begin{verbatim}
 \begin{displaymath}
-  \Max_{x \in A} f(x) \qquad  \End_R V 
+ \Max_{x \in A} f(x) \quad \End_R V 
 \end{displaymath}
 \end{verbatim}
-
-Will produces the next math formula:
+\end{minipage}
+\vline\hfill
+\begin{minipage}[t]{0.35\textwidth}
+\textbf{Will produces the next math formula:}
 \begin{displaymath}
-  \Max_{x\in A} f(x) \qquad  \End_R V 
+ \Max_{x \in A} f(x) \quad \End_R V 
 \end{displaymath}
 \end{minipage}
-\end{center}
-
 
 
 \section{Pseudo code algorithms}\label{sec:pseudo_code}
