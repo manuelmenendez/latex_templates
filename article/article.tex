@@ -79,16 +79,20 @@
 
 \maketitle
 
-
+\begin{abstract}
+This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.This is a simple template for an article written in latex, with a few useful examples as introduction to pdflatex environment.
+\end{abstract}
 
 %\abstract{
 %This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.}
 
-\bigskip 
-\begin{center}
-\textbf{Fake Abstract}
-\end{center}
-This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.This is a simple template for an article written in latex, with a few useful examples as introduction to pdflatex environment.
+%\bigskip 
+%\begin{center}
+%\textbf{Fake Abstract}
+%\end{center}
+%This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.This is a simple template for an article written in latex, with a few useful examples as introduction to pdflatex environment.
+
+This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.
 
 This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.
 
@@ -210,7 +214,6 @@ It gets more complicated when trying to box a piece of text with a verbatim envi
 \begin{minipage}[c]{0.35\textwidth}
 Error
 \end{minipage}\\
-
 
 \cprotect\fbox{
   \begin{minipage}{10cm}
@@ -391,10 +394,10 @@ Know the version with TikZ graphics package \verb|\usepackage{tikz}| and \newlin
 \begin{center}
 \begin{tikzpicture}[scale=1.1, transform shape]
 \draw (0,0) -- (4,0) -- (4,4) -- (0,4) -- cycle;
-\draw[thick] (0,-1) -- (0,5);
+\draw[thick] (0,-2) -- (0,5);
 \draw[red,thick] (2.5,2) circle (2.5cm);
 \draw[>=triangle 45,->,red,thick] (2.5,2) -- (5,2) node[midway,below] {$r$};
-\draw[>=triangle 45,<->,blue,thick] (0,-1) -- (4,-1) node[midway,below] {$l=?$};
+\draw[>=triangle 45,<->,blue,thick] (0,-0.7) -- (4,-0.7) node[midway,below] {$l=?$};
 \end{tikzpicture}
 \end{center}
 
