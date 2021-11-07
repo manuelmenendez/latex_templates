@@ -19,7 +19,6 @@
 
 %\hypersetup{linktocpage}
 
-
 \usepackage{cprotect}
 
 % AMS packages:
@@ -142,7 +141,7 @@ This second way to introduce the abstract will make the control of paragraphs in
 \newpage
 \section{Introduction to boxes and minipages}
 
-\subsubsection{Boxing Paragraphs}
+\subsection{Boxing Paragraphs}
 
 \begin{verbatim}
 \fbox{\parbox{1\textwidth}{
@@ -243,7 +242,14 @@ This second way to introduce the abstract will make the control of paragraphs in
 \lipsum[1-7]
 
 \newpage 
-\subsection{Boxing verbatim}
+\cprotect\subsection{Include\verb-\verb- anywhere! (Boxing verbatim)}
+
+The \texttt{cprotect} package attempts to do something that should be impossible: it allows you
+to put verbatim in footnotes, section titles, . . . in a straightforward way. The section above was typeset using
+
+\begin{verbatim}
+\cprotect\subsection{Include\verb-\verb- anywhere! (Boxing verbatim)}
+\end{verbatim}
 
 The normal way for boxing a paragraph or a piece of text is like follows.
 \bs
@@ -272,35 +278,88 @@ It gets more complicated when trying to box a piece of text with a verbatim envi
 
 \begin{minipage}{0.55\textwidth}
 \begin{verbatim}
-\fbox {
-    \parbox{0.9\linewidth}{
-     This is text.
-     \begin{verbatim}
-     This is some more text.
-     *end{verbatim}
-     And this is even more text.
-    }
-}
+\fbox{
+\parbox{0.9\linewidth}{
+This some normal text ...
+\begin{verbatim}
+  This is some verbatim text ...
+\-end{verbatim}
+And this is even more normal text.
+}}
 \end{verbatim}
 \end{minipage}
 \vline\hfill
 \begin{minipage}[c]{0.35\textwidth}
-Error
+\begin{verbatim}
+Error:
+! Argument of \@xverbatim has
+an extra }.<inserted text>\par }
+\end{verbatim}
 \end{minipage}
+\bigskip
 
+To be able to boxed a text with \texttt{verbatim} on it you have
+use the package \texttt{\tbs usepackage\{cprotect\}}, and type something like: \bs
 
-
-
+\begin{minipage}{0.55\textwidth}
+\noindent
+\texttt{\tbs cprotect\tbs fbox\{\\
+\tbs begin\{minipage\}\{0.8\tbs textwidth\}\\
+This some normal text and\\
+ \tbs begin\{verbatim\}\\
+ \hphantom{ } This is some verbatim text ...\\
+ \tbs end\{verbatim\}\\
+And this is even more normal text.\\
+\tbs end\{minipage\}\\
+\}}
+\end{minipage}
+\vline\hspace{0.5em}
 \cprotect\fbox{
-  \begin{minipage}{10cm}
-    This some normal text and 
-    this is verbatim 
-     \begin{verbatim}
-     This is some more text.
-     \end{verbatim}
-  \end{minipage}
+\begin{minipage}[c]{0.47\textwidth}
+This some normal text and
+\begin{verbatim}
+This is some verbatim text ...
+\end{verbatim}
+And this is even more normal text.
+\end{minipage}
 }
 
+
+
+\begin{center}
+\begin{minipage}[c]{0.8 \textwidth}
+The above text was not easy to produce, to \texttt{verbatim} an \texttt{\tbs end\{verbatim\}} is not strait forward.
+\begin{verbatim}
+\noindent
+\texttt{\tbs cprotect\tbs fbox\{\\
+\tbs begin\{minipage\}\{0.8\tbs textwidth\}\\
+This some normal text and\\
+ \tbs begin\{verbatim\}\\
+ \hphantom{ } This is some verbatim text ...\\
+ \tbs end\{verbatim\}\\
+And this is even more normal text.\\
+\tbs end\{minipage\}\\
+\}
+\end{verbatim}
+\end{minipage}
+\end{center}
+
+
+% This a another way to produce the above paragraph,
+% much easier but with en error on \end{verbatim}
+% as of today I haven't find a better way to verbatim a \end{verbatim}
+
+%\begin{verbatim}
+%\cprotect\fbox{
+%\begin{minipage}{0.8\textwidth}
+%This some normal text and 
+%\begin{verbatim}
+% This is some verbatim text ...
+%\*end{verbatim}
+%And this is even more normal text.
+%\end{minipage}
+%}
+%\end{verbatim}
 
 
 
