@@ -24,3 +24,19 @@ https://en.wikibooks.org/wiki/LaTeX
 Advanced Mathematics LaTeX Wikibooks
 https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics
 
+How to draw box around text that contains a verbatim block?
+https://tex.stackexchange.com/questions/6260/how-to-draw-box-around-text-that-contains-a-verbatim-block
+
+\documentclass{article}
+\usepackage{verbatimbox}
+\begin{document}
+\begin{verbbox}
+This is some more text.
+\end{verbbox}
+\fbox{
+This is text.
+\theverbbox
+And this is even more text.
+}
+\end{document}
+
