@@ -462,9 +462,41 @@ In the preamble of the document the Math Operator have to be defined
 
 \section{Pseudo code algorithms}\label{sec:pseudo_code}
 
-This is my first algorithm with \LaTeX
+To start with, there is more than one package to wright pseudo code in \LaTeX.
 
-\begin{algorithmic}[1]
+\begin{verbatim}
+% Pseudo code packages:
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\end{verbatim}
+
+This is my first algorithm, using environments and commands from the \texttt{algpseudocode} package:
+
+\bigskip
+\cprotect\fparbox{
+\LaTeX code:
+\begin{verbatim}
+\documentclass{article}
+\usepackage{algpseudocode}
+\begin{document}
+\begin{algorithmic}
+\State $i \gets 10$
+\If{$i\geq 5$} 
+    \State $i \gets i-1$
+\Else
+    \If{$i\leq 3$}
+        \State $i \gets i+2$
+    \EndIf
+\EndIf 
+\end{algorithmic}
+\end{document}
+\end{verbatim}
+}
+
+\bigskip 
+Here's the result output:
+
+\begin{algorithmic}
 \State $i \gets 10$
 \If{$i\geq 5$} 
     \State $i \gets i-1$
@@ -475,9 +507,35 @@ This is my first algorithm with \LaTeX
 \EndIf 
 \end{algorithmic}
 
+\newpage
+And next is the second:
+
+\bigskip
+\cprotect\fparbox{
+\LaTeX code:
+\begin{verbatim}
+\begin{algorithmic}[1]
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{verbatim}
+}
+
 \bigskip 
-And next is the second
-\begin{algorithmic}
+Here's the result output (note that this time with line numbers):
+\begin{algorithmic}[1]
 \Require $n \geq 0$
 \Ensure $y = x^n$
 \State $y \gets 1$
@@ -494,11 +552,10 @@ And next is the second
 \EndWhile
 \end{algorithmic}
 
-
-
+\newpage
 The complete pseudo code with titles:
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{An algorithm with caption}\label{alg:cap}
 \begin{algorithmic}[1]
 \Require $n \geq 0$
@@ -518,6 +575,8 @@ The complete pseudo code with titles:
 \end{algorithmic}
 \end{algorithm}
 
+
+\listofalgorithms 
 
 
 \section{Pictures and graphs}\label{sec:pictures_graphs}
