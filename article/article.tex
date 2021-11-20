@@ -18,8 +18,9 @@
 \usepackage[hidelinks]{hyperref}
 
 %\hypersetup{linktocpage}
-
+% Te verbartim 
 \usepackage{cprotect}
+\usepackage{verbatimbox}
 
 % AMS packages:
 \usepackage{amsmath}
@@ -514,7 +515,7 @@ And next is the second:
 
 \bigskip
 \cprotect\fparbox{
-\LaTeX code:
+\LaTeX \ code:
 \begin{verbatim}
 \begin{algorithmic}[1]
 \Require $n \geq 0$
@@ -533,6 +534,30 @@ And next is the second:
 \EndWhile
 \end{algorithmic}
 \end{verbatim}
+}
+
+test
+
+\begin{verbbox}
+\begin{algorithmic}[1]
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}\end{verbbox}
+
+\fbox{
+\theverbbox
 }
 
 \bigskip 
