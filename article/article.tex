@@ -15,15 +15,41 @@
 \usepackage{framed}
 \usepackage{float}
 \usepackage{lipsum}
+\usepackage[hidelinks]{hyperref}
+
+%\hypersetup{linktocpage}
+
 \usepackage{cprotect}
 
 % AMS packages:
-\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
 
+% Pseudo code packages:
 \usepackage{algpseudocode}
 \usepackage{algorithm}
+
+\usepackage{verbatim}
+\newenvironment{metaverbatim}{\verbatim}{\endverbatim}
+
+% Paragraphs and indentation control:
 %\usepackage[skip, parfill]{parskip}
-\usepackage{parskip}
+%\usepackage{parskip}
+%\setlength{\parindent}{2em}
+%\setlength{\parskip}{0.5em}
+%\renewcommand{\baselinestretch}{1}
+
+
+
+%\usepackage[firstpage]{draftwatermark} % [nostamp,firstpage]
+%\SetWatermarkText{\textbf{DRAFT}}
+%\SetWatermarkScale{4}
+%\SetWatermarkColor[gray]{0.9}
+%%\SetWatermarkLightness{0.95}
+%%\SetWatermarkFontSize{5cm}
+%%\SetWatermarkAngle{45}
 
 
 % Theorems
@@ -52,6 +78,15 @@
 % -----------------------------------------------------------------
 \newcommand{\abs}[1]{\left\vert#1\right\vert}
 
+% Tool box of new commands
+\newcommand{\fparbox}[2][0.8\textwidth]{\fbox{\parbox{#1}{#2}}}
+
+\newcommand{\ms}{\medskip}
+\newcommand{\bs}{\bigskip}
+\newcommand{\tbs}{\textbackslash}
+
+
+
 % Operators
 % New operators must defined as such to have them typeset
 % correctly. As an example we define the Jacobian:
@@ -63,6 +98,8 @@
 \DeclareMathOperator{\Max}{Max}
 \DeclareMathOperator{\End}{End}
 
+
+
 %-----------------------------------------------------------------
 \title{Template for a \LaTeX\ article}
 \author{Angela Menéndez\\
@@ -71,112 +108,155 @@
   \small Madrid
 }
 
-%\setlength{\parindent}{0em}
-%\setlength{\parskip}{0.5em}
-%\renewcommand{\baselinestretch}{1}
+
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.This is a simple template for an article written in latex, with a few useful examples as introduction to pdflatex environment.
+This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.
+
+Since we are in the abstract, it is worth to mention that the Abstract will be open and close like this:
+\begin{verbatim}
+\begin{abstract}
+    Abstact text here ...
 \end{abstract}
+\end{verbatim}
 
-%\abstract{
-%This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.}
+It is not recommended to use the command
+\texttt{\textbackslash abstract},
+\begin{verbatim}
+\abstract{
+    Abstact text here ...
+}
+\end{verbatim}
 
-%\bigskip 
-%\begin{center}
-%\textbf{Fake Abstract}
-%\end{center}
-%This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to pdflatex environment.This is a simple template for an article written in latex, with a few useful examples as introduction to pdflatex environment.
+This second way to introduce the abstract will make the control of paragraphs indentation and spacing more tedious,
+ 
 
-This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.
-
-This is a simple template for an article written in \LaTeX, with a few useful examples as introduction to \LaTeX environment.
+\end{abstract}
 
 \newpage
 \tableofcontents
 
 \newpage
-\section{Paragraphs formatting}\label{sec:par_formatting}
+\section{Introduction to boxes and minipages}
+
+\subsection{Boxing Paragraphs}
+
 \begin{verbatim}
-\usepackage{parskip}
-%\usepackage[skip, parfill]{parskip}
-\setlength{\parindent}{4em}
-\setlength{\parskip}{1em}
-\renewcommand{\baselinestretch}{1}
+\fbox{\parbox{1\textwidth}{
+\lipsum[1]
+}
+\end{verbatim}
+\bigskip 
+
+\noindent
+\fbox{\parbox{1\textwidth}{
+\lipsum[1]}}
+\bigskip 
+
+\begin{verbatim}
+\fbox{\parbox{0.8\textwidth}{
+\lipsum[2]
+}
+\end{verbatim}
+\bigskip 
+
+\noindent
+\fbox{\parbox{0.8\textwidth}{\lipsum[2]}}
+\bigskip 
+
+\newpage
+\begin{verbatim}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+    \lipsum[3-5]
+}
+\end{center}
+\end{verbatim}
+\bigskip 
+
+\noindent
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{\lipsum[3-5]}}
+\end{center}
+ 
+\begin{verbatim}
+\fbox{
+\begin{minipage}[c]{0.7\textwidth}
+  \lipsum[16]
+\end{minipage}
+}
+\end{verbatim}
+\bigskip 
+
+\noindent
+\fbox{
+\begin{minipage}[c]{0.7\textwidth}
+  \lipsum[16]
+\end{minipage}
+}
+\bigskip 
+
+\begin{verbatim}
+\begin{center}
+\fbox{
+\begin{minipage}[c]{0.7\textwidth}
+  \lipsum[16]
+\end{minipage}
+}
+\end{center}
+\end{verbatim}
+\bigskip 
+
+\begin{center}
+\fbox{
+\begin{minipage}[c]{0.7\textwidth}
+  \lipsum[16]
+\end{minipage}
+}
+\end{center}
+\bigskip 
+
+
+
+\begin{verbatim}
+\fbox{\parbox{0.8\textwidth}{
+    The quick brown fox jumps right over the lazy dog
+}}
+\end{verbatim}
+\bigskip 
+
+\fbox{\parbox{0.8\textwidth}{
+    The quick brown fox jumps right over the lazy dog
+}}
+
+
+\subsection{Some paragraphs generated with \texttt{\textbackslash usepackage\{lipsum\} }}
+
+\begin{verbatim}
+\lipsum[1-7]
+\end{verbatim}
+\hrule \bigskip 
+
+\lipsum[1-7]
+
+\newpage 
+\cprotect\subsection{Include\verb-\verb- anywhere! (Boxing verbatim)}
+
+The \texttt{cprotect} package attempts to do something that should be impossible: it allows you
+to put verbatim in footnotes, section titles, . . . in a straightforward way. The section above was typeset using
+
+\begin{verbatim}
+\cprotect\subsection{Include\verb-\verb- anywhere! (Boxing verbatim)}
 \end{verbatim}
 
-%\begin{figure}[hbtp]
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.7]{./figs/Paragraph-layout.png}
-\caption{Paragraph indentation and spacing}
-\end{figure}
+The normal way for boxing a paragraph or a piece of text is like follows.
+\bs
 
-\subsection{Paragraph indentation}\label{sec:par_indentation}
-
-\lipsum[1]
-
-\setlength{\leftskip}{2cm}
-\lipsum[2]
-
-\setlength{\leftskip}{0pt}
-\lipsum[3]\\ \\
-
-
-\newenvironment{myindentpar}[1]%
-{\begin{list}{}
-         {\setlength{\leftmargin}{#1}}
-         \item[]
-}
-{\end{list}}
-
-\begin{myindentpar}{5em}
-\lipsum[4]
-\end{myindentpar}
-
-\lipsum[1]
-\newpage
-\subsubsection{Indenting paragraphs with \texttt{itemize}}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a,magna.
-\begin{itemize}
-\item[]
-	Fusce mauris. Vestibulum luctus nibh at lectus. Sed bibendum, nulla a faucibus semper, leo velit ultricies tellus, ac venenatis arcu wisi vel nisl. Vestibulum diam. Aliquam pellentesque, augue quis sagittis posuere, turpis lacus congue quam, in hendrerit risus eros eget felis.
-\begin{itemize}
-\item[]
-Maecenas eget erat in sapien mattis porttitor.
-Vestibulum porttitor. Nulla facilisi. Sed a turpis eu lacus commodo
-facilisis. Morbi fringilla, wisi in dignissim interdum, justo lectus
-sagittis dui, et vehicula libero dui cursus dui. Mauris tempor ligula
-sed lacus. Duis cursus enim ut augue. Cras ac magna. Cras nulla.
-Nulla egestas. Curabitur a leo. Quisque egestas wisi eget nunc.
-Nam feugiat lacus vel est. Curabitur consectetuer.
-\end{itemize} 
-\end{itemize}
-
-
-\section{Introduction to boxes and minipages}
-\fbox{
-\parbox{0.8\textwidth}{
-One can refer to equations like this: see equation (\ref{eq:area}). One can also refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
-to the bibliography like this: \cite{Cd94} just typing.}}
-
-\bigskip
-\fbox{
-\begin{minipage}[c]{15em}
-  The quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog. the quick brown fox jumps right over the lazy dog.
-\end{minipage}
-}\\ \\
-
-
-\subsection{Boxing verbatim}
-
-The normal way for boxing a paragraph or a piece of text is like follows,\\
-
-\begin{minipage}{0.35\textwidth}
+\begin{minipage}{0.45\textwidth}
 \begin{verbatim}
 \fbox {
     \parbox{0.9\linewidth}{
@@ -187,51 +267,107 @@ The normal way for boxing a paragraph or a piece of text is like follows,\\
 \end{verbatim}
 \end{minipage}
 \hfill\vline\hfill
-\begin{minipage}[c]{0.35\textwidth}
-\fbox {
+\begin{minipage}[c]{0.3\textwidth}
+\fbox{
     \parbox{0.9\linewidth}{
     This is some text! Blah blah blah...
-    }
-}
-\end{minipage}\\
+    }}
+\end{minipage}
+\bs
 
-It gets more complicated when trying to box a piece of text with a verbatim environment on it. \\
+It gets more complicated when trying to box a piece of text with a verbatim environment on it.
+\bigskip 
 
 \begin{minipage}{0.55\textwidth}
 \begin{verbatim}
-\fbox {
-    \parbox{0.9\linewidth}{
-     This is text.
-     \begin{verbatim}
-     This is some more text.
-     *end{verbatim}
-     And this is even more text.
-    }
-}
+\fbox{
+\parbox{0.9\linewidth}{
+This some normal text ...
+\begin{verbatim}
+  This is some verbatim text ...
+\-end{verbatim}
+And this is even more normal text.
+}}
 \end{verbatim}
 \end{minipage}
 \vline\hfill
 \begin{minipage}[c]{0.35\textwidth}
-Error
-\end{minipage}\\
+\begin{verbatim}
+Error:
+! Argument of \@xverbatim has
+an extra }.<inserted text>\par }
+\end{verbatim}
+\end{minipage}
+\bigskip
 
+To be able to boxed a text with \texttt{verbatim} on it you have
+use the package \texttt{\tbs usepackage\{cprotect\}}, and type something like: \bs
+
+\begin{minipage}{0.55\textwidth}
+\noindent
+\texttt{\tbs cprotect\tbs fbox\{\\
+\tbs begin\{minipage\}\{0.8\tbs textwidth\}\\
+This some normal text and\\
+ \tbs begin\{verbatim\}\\
+ \hphantom{ } This is some verbatim text ...\\
+ \tbs end\{verbatim\}\\
+And this is even more normal text.\\
+\tbs end\{minipage\}\\
+\}}
+\end{minipage}
+\vline\hspace{0.5em}
 \cprotect\fbox{
-  \begin{minipage}{10cm}
-    This some normal text and 
-    this is verbatim 
-     \begin{verbatim}
-     This is some more text.
-     \end{verbatim}
-  \end{minipage}
+\begin{minipage}[c]{0.47\textwidth}
+This some normal text and
+\begin{verbatim}
+This is some verbatim text ...
+\end{verbatim}
+And this is even more normal text.
+\end{minipage}
 }
 
 
 
+\begin{center}
+\begin{minipage}[c]{0.8 \textwidth}
+The above text was not easy to produce, to \texttt{verbatim} an \texttt{\tbs end\{verbatim\}} is not strait forward.
+\begin{verbatim}
+\noindent
+\texttt{\tbs cprotect\tbs fbox\{\\
+\tbs begin\{minipage\}\{0.8\tbs textwidth\}\\
+This some normal text and\\
+ \tbs begin\{verbatim\}\\
+ \hphantom{ } This is some verbatim text ...\\
+ \tbs end\{verbatim\}\\
+And this is even more normal text.\\
+\tbs end\{minipage\}\\
+\}
+\end{verbatim}
+\end{minipage}
+\end{center}
+
+
+% This a another way to produce the above paragraph,
+% much easier but with en error on \end{verbatim}
+% as of today I haven't find a better way to verbatim a \end{verbatim}
+
+%\begin{verbatim}
+%\cprotect\fbox{
+%\begin{minipage}{0.8\textwidth}
+%This some normal text and 
+%\begin{verbatim}
+% This is some verbatim text ...
+%\*end{verbatim}
+%And this is even more normal text.
+%\end{minipage}
+%}
+%\end{verbatim}
+
+
 
 \subsection{Boxing math equations}
-For boxing equation \verb|\boxed{}| has to be used.
-
-\
+For boxing equation \texttt{\textbackslash boxed{}} has to be used.
+\bigskip 
 
 \begin{minipage}{0.35\textwidth}
 \begin{verbatim}
@@ -262,9 +398,10 @@ represents the 3D sphere.
 The next equation \boxed{x^2+y^2 = z^2} represents the 3D sphere.
 \end{minipage}\\ \\
 
-\section{Some maths typing examples}\label{sec:maths_examples}
 
-The next equation represents the area of a circle. It will have an equation number and a label so it can be referenced anywhere in the document.
+
+\section{Some maths typing examples}\label{sec:maths_examples}
+he next equation represents the area of a circle. It will have an equation number and a label so it can be referenced anywhere in the document.
 
 The latex code is:
 \begin{verbatim}
@@ -303,9 +440,6 @@ Other equation:
 \[
 S_n = \sum_{n=1}^{\infty} \frac{1}{n^3} + \sum_{n=1}^{\infty} \frac{1}{n^3}
 \] 
-
-One can refer to equations like this: see equation (\ref{eq:area}). One can also refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
-to the bibliography like this: \cite{Cd94} just typing \verb|\cite{Cd94}|.
 
 One can refer to equations like this: see equation (\ref{eq:area}). One can also
 refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
@@ -515,6 +649,92 @@ Nodes connected with lines and text in the line.
 \draw[>=triangle 45,<->,blue,thick] (0,-1) -- (4,-1) node[midway,below] {$l=?$};
 \end{tikzpicture}
 \end{center}
+
+
+\section{Paragraphs formatting}\label{sec:par_formatting}
+\begin{verbatim}
+\usepackage{parskip}
+%\usepackage[skip, parfill]{parskip}
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{1}
+\end{verbatim}
+
+%\begin{figure}[hbtp]
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{./figs/Paragraph-layout.png}
+\caption{Paragraph indentation and spacing}
+\end{figure}
+
+\subsection{Paragraph indentation}\label{sec:par_indentation}
+
+\lipsum[1]
+
+\setlength{\leftskip}{2cm}
+\lipsum[2]
+
+\setlength{\leftskip}{0pt}
+\lipsum[3]
+
+
+\newenvironment{myindentpar}[1]%
+{\begin{list}{}
+         {\setlength{\leftmargin}{#1}}
+         \item[]
+}
+{\end{list}}
+
+\begin{myindentpar}{5em}
+\lipsum[4]
+\end{myindentpar}
+
+\lipsum[1]
+\newpage
+\subsubsection{Indenting paragraphs with \texttt{itemize}}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis. Curabitur dictum gravida mauris. Nam arcu libero, nonummy eget, consectetuer id, vulputate a,magna.
+\begin{itemize}
+\item[]
+	Fusce mauris. Vestibulum luctus nibh at lectus. Sed bibendum, nulla a faucibus semper, leo velit ultricies tellus, ac venenatis arcu wisi vel nisl. Vestibulum diam. Aliquam pellentesque, augue quis sagittis posuere, turpis lacus congue quam, in hendrerit risus eros eget felis.
+\begin{itemize}
+\item[]
+Maecenas eget erat in sapien mattis porttitor.
+Vestibulum porttitor. Nulla facilisi. Sed a turpis eu lacus commodo
+facilisis. Morbi fringilla, wisi in dignissim interdum, justo lectus
+sagittis dui, et vehicula libero dui cursus dui. Mauris tempor ligula
+sed lacus. Duis cursus enim ut augue. Cras ac magna. Cras nulla.
+Nulla egestas. Curabitur a leo. Quisque egestas wisi eget nunc.
+Nam feugiat lacus vel est. Curabitur consectetuer.
+\end{itemize} 
+\end{itemize}
+
+
+
+\section{metaverbatim}
+
+
+\begin{metaverbatim}
+\begin{verbatim}
+  This is a verbatim block.
+\end{verbatim}
+\end{metaverbatim}
+
+\hrule
+\begin{metaverbatim}
+\documentclass{article}
+\usepackage{verbatim}
+\newenvironment{metaverbatim}{\verbatim}{\endverbatim}
+
+\begin{document}
+\begin{metaverbatim}
+\begin{verbatim}
+  This is a verbatim block.
+\end{verbatim}
+\end{metaverbatim}
+\end{document}
+\end{metaverbatim}
+
+
 
 
 \newpage
