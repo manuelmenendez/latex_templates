@@ -67,7 +67,7 @@
 
 % Shortcuts.
 % One can define new commands to shorten frequently used
-% constructions. As an example, this defines the R and Z used
+% constructions. As an example, this defines the R, Z, Q and R used
 % for the real and integer numbers.
 %-----------------------------------------------------------------
 \def\RR{\mathbb{R}}
@@ -413,7 +413,7 @@ The latex code is:
 \end{verbatim}
 
 \begin{equation}\label{eq:area_circle}
-  A = \pi r^2  
+  A = \pi r^2  \,.
 \end{equation}
 
 One can refer to equations with a label like this: see equation (\ref{eq:area_circle}) which is the area of a circle.
@@ -428,32 +428,45 @@ The latex code is:
 \end{verbatim}
 
 \begin{equation*}\label{eq:circumferece_circle}
- C=2 \pi r
+ C=2 \pi r \,.
 \end{equation*}
  
  Another possible code for the same equation (without number or label) is:
  \begin{verbatim}
-\[  P=2 \pi r \]
+\[  P=2 \pi r \,.\]
 \end{verbatim}
 
-\[  P=2 \pi r \]
+\[  P=2 \pi r \,.\]
 
 Other equation:
-\[
-S_n = \sum_{n=1}^{\infty} \frac{1}{n^3} + \sum_{n=1}^{\infty} \frac{1}{n^3}
-\] 
 
-One can refer to equations like this: see equation (\ref{eq:area}). One can also
+\begin{equation}\label{eq:infsum_1_n}
+S_n = \sum_{n=1}^{\infty} \frac{1}{n^2}
+    = f\frac{1}{2}+\frac{1}{4}+\frac{1}{8}+\frac{1}{16}+\cdots
+    = 1 \,.
+\end{equation}
+
+One can refer to equations like this: see equation (\ref{eq:area_circle}). One can also
 refer to sections in the same way: see section \ref{sec:pictures_graphs}. Or
-to the bibliography like this: \cite{Cd94}.
+to the bibliography like this: \cite{Someone2000}.
 
-More text. Claro 
-\noindent
+This is not a grate example of equation but uses \verb-\def\RR{\mathbb{R}}- before \verb-\begin{document}- to define shortcuts and \verb-text{...}- to write text inside math environment.
+
+\LaTeX \ code:
+\begin{verbatim}
+\[\RR\ \text{is the set of real numbers}\]
+\[\QQ\ \text{is the set of rational numbers}\]
+\[\ZZ\ \text{is the set of integer numbers}\]
+\[\NN\ \text{is the set of natual numbers}\]
+\end{verbatim}
+
+
 \[\RR\ \text{is the set of real numbers}\]
 \[\QQ\ \text{is the set of rational numbers}\]
 \[\ZZ\ \text{is the set of integer numbers}\]
 \[\NN\ \text{is the set of natual numbers}\]
 
+\[\NN \in \ZZ \in \QQ \in \RR\]
 
 
 \subsection{\AmS-\LaTeX \texttt{ amsmaths} package}\label{sec:nothing}
@@ -836,21 +849,20 @@ Nam feugiat lacus vel est. Curabitur consectetuer.
 \end{metaverbatim}
 
 \hrule
+
 \begin{metaverbatim}
 \documentclass{article}
 \usepackage{verbatim}
 \newenvironment{metaverbatim}{\verbatim}{\endverbatim}
 
 \begin{document}
-\begin{metaverbatim}
+\begin{_metaverbatim}
 \begin{verbatim}
   This is a verbatim block.
 \end{verbatim}
-\end{metaverbatim}
+\end{_metaverbatim}
 \end{document}
 \end{metaverbatim}
-
-
 
 
 \newpage
