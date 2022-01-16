@@ -17,9 +17,11 @@
 \usepackage{lipsum}
 \usepackage[hidelinks]{hyperref}
 
-%\hypersetup{linktocpage}
 
+%\hypersetup{linktocpage}
+% Te verbartim 
 \usepackage{cprotect}
+\usepackage{verbatimbox}
 
 % AMS packages:
 \usepackage{amsmath}
@@ -36,7 +38,7 @@
 
 % Paragraphs and indentation control:
 %\usepackage[skip, parfill]{parskip}
-%\usepackage{parskip}
+\usepackage{parskip}
 %\setlength{\parindent}{2em}
 %\setlength{\parskip}{0.5em}
 %\renewcommand{\baselinestretch}{1}
@@ -489,12 +491,44 @@ In the preamble of the document the Math Operator have to be defined
 \end{displaymath}
 \end{minipage}
 
-
+\newpage
 \section{Pseudo code algorithms}\label{sec:pseudo_code}
 
-This is my first algorithm with \LaTeX
+To start with, there is more than one package to wright pseudo code in \LaTeX.
 
-\begin{algorithmic}[1]
+\begin{verbatim}
+% Pseudo code packages:
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\end{verbatim}
+
+This is my first algorithm, using environments and commands from the \texttt{algpseudocode} package:
+
+\bigskip
+
+\LaTeX \ code:
+
+\begin{verbatim}
+\documentclass{article}
+\usepackage{algpseudocode}
+\begin{document}
+\begin{algorithmic}
+\State $i \gets 10$
+\If{$i\geq 5$} 
+    \State $i \gets i-1$
+\Else
+    \If{$i\leq 3$}
+        \State $i \gets i+2$
+    \EndIf
+\EndIf 
+\end{algorithmic}
+\end{document}
+\end{verbatim}
+
+\bigskip 
+Here's the result output:
+
+\begin{algorithmic}
 \State $i \gets 10$
 \If{$i\geq 5$} 
     \State $i \gets i-1$
@@ -505,9 +539,40 @@ This is my first algorithm with \LaTeX
 \EndIf 
 \end{algorithmic}
 
+\newpage
+Next is the second example with algorithmic. Note that this time the pseudo code has line numbers.
+
+
+\begin{verbbox}
+\begin{algorithmic}[1]
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{verbbox}
 \bigskip 
-And next is the second
-\begin{algorithmic}
+
+\LaTeX \ code:
+
+\fbox{
+\theverbbox
+}
+
+\bigskip 
+Here's the result output:
+
+\begin{algorithmic}[1]
 \Require $n \geq 0$
 \Ensure $y = x^n$
 \State $y \gets 1$
@@ -524,11 +589,16 @@ And next is the second
 \EndWhile
 \end{algorithmic}
 
+\newpage
+The above algorithm example is not captioned nor numbered. If you need a captioned algorithm, you will also need to load the \verb-algorithm- package. You can use \verb-\label{...}- after the \verb-\caption{...}-, so that the algorithm number can be cross-referenced with \verb-\ref{...}-.
 
+\begin{verbatim}
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\begin{document}
 
-The complete pseudo code with titles:
-
-\begin{algorithm}
+\begin{algorithm}[H]
 \caption{An algorithm with caption}\label{alg:cap}
 \begin{algorithmic}[1]
 \Require $n \geq 0$
@@ -548,6 +618,52 @@ The complete pseudo code with titles:
 \end{algorithmic}
 \end{algorithm}
 
+\begin{document}
+\end{verbatim}
+
+
+\begin{algorithm}[H]
+\caption{An algorithm with caption}\label{alg:cap}
+\begin{algorithmic}[1]
+\Require $n \geq 0$
+\Ensure $y = x^n$
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\While{$N \neq 0$}
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}[H]
+\caption{Another algorithm with caption}\label{alg:cap_02}
+\begin{algorithmic}[1]
+\State $y \gets 1$
+\State $X \gets x$
+\State $N \gets n$
+\If{$N$ is even}
+    \State $X \gets X \times X$
+    \State $N \gets \frac{N}{2}$  \Comment{This is a comment a bit longer than before}
+\ElsIf{$N$ is odd}
+    \State $y \gets y \times X$
+    \State $N \gets N - 1$
+\EndIf
+\end{algorithmic}
+\end{algorithm}
+
+The algorithm environment is a float like table and figure, so you can add float placement modifiers [hbt!] after \verb-\begin{algorithm}- if necessary. This also means that while a long algorithmic environment on its own can break across pages, an algorithm environment won't.
+
+The algorithm package also provides a \texttt{\tbs listofalgorithms }command that works like \texttt{\tbs listoffigures}, but for captioned algorithms, like this.
+
+
+\listofalgorithms 
 
 
 \section{Pictures and graphs}\label{sec:pictures_graphs}
