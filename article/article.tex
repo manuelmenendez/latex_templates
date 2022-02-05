@@ -504,11 +504,72 @@ In the preamble of the document the Math Operator have to be defined
 \end{displaymath}
 \end{minipage}
 
-
+\newpage
 \subsection{Matrices and determinants}
 
 These are different ways to open and close matrices and their type names: 
+To create a matrix it has to be within a \LaTeX math environment.
 
+example code:
+
+\begin{tabular}{c|c}
+\begin{minipage}[t]{0.35\textwidth}
+\begin{verbatim}
+\begin{equation}
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & 3 \\
+5 & 1 & 2
+\end{matrix}
+\end{equation}
+\end{verbatim}
+\end{minipage}
+ &
+\begin{minipage}[t]{0.35\textwidth}
+The result is:
+
+\begin{equation*}
+\begin{matrix}
+1 & 2 & 3 \\
+2 & 4 & 3 \\
+5 & 1 & 2
+\end{matrix}
+\end{equation*}
+\end{minipage}
+\end{tabular}
+
+\bigskip
+If you want to add any type of brackets add "p", "b", "B", "v", "V":
+
+\begin{tabular}{c|c}
+\begin{minipage}[t]{0.35\textwidth}
+\begin{verbatim}
+\begin{equation}
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & 3 \\
+5 & 1 & 2
+\end{pmatrix}
+\end{equation}
+\end{verbatim}
+\end{minipage}
+ &
+\begin{minipage}[t]{0.35\textwidth}
+The result is:
+
+\begin{equation*}
+\begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & 3 \\
+5 & 1 & 2
+\end{pmatrix}
+\end{equation*}
+\end{minipage}
+\end{tabular}
+
+\bigskip
+\bigskip
+All the options look like this:
 \begin{equation}
 \begin{array}{ccccc}
 \begin{matrix}
